@@ -1,10 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+{% block heading %}
+    <title>Register Page</title>
+    <style>
+        body{
+            background-image: url("https://img.freepik.com/free-vector/pink-background-with-abstract-waves_1393-257.jpg");
+            background-size: cover;
+        }
+    </style>
+{% endblock heading %}1
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+                <div class="card mb-3 mx-auto card_obj p-3" style="width: 26rem; height: 33rem;margin-top: 30px;border-radius: 7px;box-shadow:1px 1px 1px black;background-color: lightpink; ">
+                {{ form|crispy }}
+                <div class="form-group d-flex justify-content-center mt-3">
+                    <button class="btn"  style="background-color: fuchsia;box-shadow: 1px 1px 1px black; font-family: 'Arial Rounded MT Bold'" type="submit">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
