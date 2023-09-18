@@ -3,8 +3,9 @@
 ## Qo'llanma
 
 **Foydalanish**
+* Terminalga yozing
 ```
-pip install django
+ pip install -r requirements.txt
 ```
 **Yuklab Olish**
 ```
