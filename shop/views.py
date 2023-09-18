@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AddForm
 from .models import AddModels, cars, home, job, animals, others, vegas_all
+from django.db.models import Q
 
 
 # Create your views here.
@@ -58,4 +59,4 @@ def homes(request):
 def other(request):
     task = others.objects.all()
     return render(request, 'shop/others.html', {'task': task})
-    
+
