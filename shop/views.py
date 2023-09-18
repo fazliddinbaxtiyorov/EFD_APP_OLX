@@ -60,6 +60,7 @@ def other(request):
     task = others.objects.all()
     return render(request, 'shop/others.html', {'task': task})
 
+
 def home_pages(request):
     all_page_search = AddModels.objects.all()
     car_search = cars.objects.all()
