@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import Home, adding_product, profile, shop_box, show_box, homes, vegas, car, jobs, animalss, other
+from .views import adding_product, profile, shop_box, show_box, homes, vegas, car, jobs, animalss, other, search, home_pages
 
 urlpatterns = [
-    path('', Home.as_view(), name='home'),
+    path('', home_pages, name='home'),
     path('profile/', profile, name='profile'),
     path('shopping/', shop_box, name='shop_box'),
     path('new/', adding_product, name='add'),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('job/', jobs, name='job'),
     path('animals/', animalss, name='animals'),
     path('other/', other, name='other'),
+    path('search/', search, name='search'),
 ]

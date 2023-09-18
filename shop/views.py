@@ -60,28 +60,3 @@ def other(request):
     task = others.objects.all()
     return render(request, 'shop/others.html', {'task': task})
 
-
-def home_pages(request):
-    all_page_search = AddModels.objects.all()
-    car_search = cars.objects.all()
-    job_search = job.objects.all()
-    home_search = home.objects.all()
-    animals_search = animals.objects.all()
-    other_search = others.objects.all()
-    vegas_search = vegas_all.objects.all()
-    return render(request, 'shop/index.html',
-                  {'all_search': all_page_search, 'job_search': job_search, 'animals_search': animals_search,
-                   'home_search': home_search, 'other_search': other_search, 'vegas_search': vegas_search,
-                   'car_search': car_search})
-
-
-def search(request):
-    query = request.GET.get('q')
-    all_page_search = AddModels.objects.filter(Q(title__icontains=query))
-    car_search = cars.objects.filter(Q(title__icontains=query))
-    job_search = job.objects.filter(Q(title__icontains=query))
-    home_search = home.objects.filter(Q(title__icontains=query))
-    animals_search = animals.objects.filter(Q(title__icontains=query))
-    other_search = others.objects.filter(Q(title__icontains=query))
-    vegas_search = vegas_all.objects.filter(Q(title__icontains=query))
-    return render(request, 'shop/search.html', {'all_search': all_page_search, 'job_search': job_search, 'animals_search' : animals_search, 'home_search': home_search, 'other_search': other_search, 'vegas_search': vegas_search, 'car_search':car_search})
