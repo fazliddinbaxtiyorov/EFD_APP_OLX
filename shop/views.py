@@ -44,7 +44,7 @@ def animalss(request):
 
 def vegas(request):
     task = vegas_all.objects.all()
-    return render(request, 'shop/all.html', {'task': task})
+    return render(request, 'shop/vegatables.html', {'task': task})
 
 
 def car(request):
@@ -54,7 +54,7 @@ def car(request):
 
 def jobs(request):
     task = job.objects.all()
-    return render(request, 'shop/job.html', {'task': task})
+    return render(request, 'shop/jobs.html', {'task': task})
 
 
 def homes(request):
@@ -64,4 +64,4 @@ def homes(request):
 
 def other(request):
     task = others.objects.all()
-    return render(request, 'shop/other.html', {'task': task})
+    return render(request, 'shop/others.html', {'task': task})
