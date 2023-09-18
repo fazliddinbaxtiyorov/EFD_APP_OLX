@@ -64,12 +64,11 @@
 <div class="all">
    {% for i in all_search|slice:":24" %}
    <div class="product">
-        <img src="{{ i.photo.url }}" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
-        <h3 class="cost">{{ i.cost }}</h3>
+         <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
+        <h3 class="title">{{i.title}}</h3>
+        <h6 class="map">{{i.location}}-{{ i.date|date:"Y-m-d h:m"  }}</h6>
+        <h3 class="title" >Phone Number: {{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3><p>
     </div>
    {% endfor %}
 </div>
@@ -77,7 +76,7 @@
    {% for i in animals_search|slice:":24" %}
    <div class="product">
         <img src="https://www.webbox.co.uk/wp-content/uploads/2020/10/angry_cat_2-scaled-1568x1046.jpg" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
@@ -89,7 +88,7 @@
        {% for i in car_search|slice:":24" %}
    <div class="product">
         <img src="https://cdn.jdpower.com/Average%20Weight%20Of%20A%20Car.jpg" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
@@ -101,7 +100,7 @@
        {% for i in home_search|slice:":24" %}
    <div class="product">
         <img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
@@ -113,7 +112,7 @@
        {% for i in job_search|slice:":24" %}
    <div class="product">
         <img src="https://www.searchenginejournal.com/wp-content/uploads/2017/06/shutterstock_268688447.jpg" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
@@ -125,7 +124,7 @@
        {% for i in other_search|slice:":24" %}
    <div class="product">
         <img src="https://tangentmaterials.com/wp-content/uploads/2019/11/Fresh-Produce-Pics-017-scaled.jpg" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
@@ -137,7 +136,7 @@
        {% for i in vegas_search|slice:":24" %}
    <div class="product">
         <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6" alt="">
-        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="map" >Description: {{ i.description }}</h3>
         <h6 class="map">{{i.location}}</h6>
         <h3 class="title" >Phone Number: +{{ i.number }}</h3>
