@@ -1,0 +1,14 @@
+{% extends "shop/base.html" %}
+{% block content %}
+    <div class="product">
+        <img src="{{ task.photo.url }}" alt="">
+        <h3 class="title">Title:{{task.title}}</h3>
+        <h3 class="map" >Description: {{ task.description }}</h3>
+        <h6 class="map">{{task.location}}-{{ task.date|date:"Y-m-d h:m"  }}</h6>
+        <h3 class="map" >Categories: {{ task.categories }}</h3>
+        <h3 class="title" >Phone Number: +{{ task.number }}</h3>
+        <h3 class="cost">{{ task.cost }}</h3>
+    </div>
+
+    <a href="{% url 'home' %}" style="width: 95px;height:40px;margin-left:40px;" class="btn btn-info">Back</a>
+{% endblock content%}
