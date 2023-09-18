@@ -5,6 +5,12 @@
     <title>OLX.uz Design</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/previews/020/401/223/original/efd-letter-logo-design-on-white-background-efd-creative-circle-letter-logo-concept-efd-letter-design-vector.jpg" type="image/x-icon">
+<style>
+    body{
+      background-image: url("https://www.solidbackgrounds.com/images/3840x2160/3840x2160-light-sky-blue-solid-color-background.jpg");
+
+    }
+</style>
  {% endblock heading%}
 {% block content %}
 
@@ -28,10 +34,11 @@
 {% endif %}
 </div>
 <div class="search_bar">
-    <form method="POST" class="form-inline my-2 my-lg-0">
+   <form action="{% url 'search' %}" method="GET">
         {% csrf_token %}
-    <input  class="search" style="height:40px;width:600px;text-align:center;margin:20px 14px;margin-left:300px;" name="search" type="search" placeholder="Xaridingizni Turini Yozing"><button style="height:40px;width:130px;margin-bottom:5px;" type="submit" class="btn btn-outline-success">Search</button>
-    </form>
+  <input class="search" style="height:40px;width:600px;text-align:center;margin:20px 14px;margin-left:300px;" type="text" name="q" placeholder="Xaridingizni Turini Yozing">
+  <button class="btn btn-success"  style="height:40px;width:130px;margin-bottom:5px;" type="submit">Search</button>
+</form>
 </div>
 <div class="selection-buttons">
   <a href="{% url 'vegas' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/savat.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Sabzavotlar</b></a>
@@ -39,7 +46,7 @@
   <a href="{% url 'house' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="https://img.freepik.com/premium-photo/close-up-small-white-house-with-red-door-generative-ai_958078-3190.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Ko'chmas Mulk</b></a>
   <a href="{% url 'animals' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/pet.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Hayvonot Olami</b></a>
   <a href="{% url 'job' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/job.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Kasblar</b></a>
-  <a href="{% url 'other' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="https://icon-library.com/images/others-icon/others-icon-11.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Boshqalar</b></a>
+  <a href="{% url 'other' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKk1RmMNTy8C3iRTTuSTKeXZUEAKWLi_WnnVZE2xaYAJzu_aduJ5XiwxobMUkr4hs-5xU&usqp=CAU" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Boshqalar</b></a>
 
 </div>
 <div class="all">
@@ -52,6 +59,90 @@
    <h6 class="map" >{{i.location}}-{{ i.date|date:"Y-m-d h:m"  }}</h6>
    <h6 class="cost" >{{ i.cost }}</h6>
    </div>
+   {% endfor %}
+</div>
+<div class="all">
+   {% for i in all_search|slice:":24" %}
+   <div class="product">
+        <img src="{{ i.photo.url }}" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+   {% for i in animals_search|slice:":24" %}
+   <div class="product">
+        <img src="https://www.webbox.co.uk/wp-content/uploads/2020/10/angry_cat_2-scaled-1568x1046.jpg" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+       {% for i in car_search|slice:":24" %}
+   <div class="product">
+        <img src="https://cdn.jdpower.com/Average%20Weight%20Of%20A%20Car.jpg" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+       {% for i in home_search|slice:":24" %}
+   <div class="product">
+        <img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+       {% for i in job_search|slice:":24" %}
+   <div class="product">
+        <img src="https://www.searchenginejournal.com/wp-content/uploads/2017/06/shutterstock_268688447.jpg" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+       {% for i in other_search|slice:":24" %}
+   <div class="product">
+        <img src="https://tangentmaterials.com/wp-content/uploads/2019/11/Fresh-Produce-Pics-017-scaled.jpg" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+       {% for i in vegas_search|slice:":24" %}
+   <div class="product">
+        <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6" alt="">
+        <h3 class="title">Title:{{i.title}}</h3>
+        <h3 class="map" >Description: {{ i.description }}</h3>
+        <h6 class="map">{{i.location}}</h6>
+        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost }}</h3>
+    </div>
    {% endfor %}
 </div>
 {% endblock content%}
