@@ -76,3 +76,4 @@ class vegas_all(models.Model):
 
     class Meta:
         db_table = 'vegas_all'
+

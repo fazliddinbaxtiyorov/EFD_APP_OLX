@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+
+from users.forms import UserRegisterForm
 from .forms import AddForm
 from .models import AddModels, cars, home, job, animals, others, vegas_all
 from django.db.models import Q
@@ -17,7 +19,13 @@ def adding_product(request):
 
 
 def profile(request):
-    return render(request, 'shop/profile.html')
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        username = form.cleaned_data.get('username')
+        return render(request, 'shop/profile.html', {'user': username})
+    else:
+        form = UserRegisterForm()
+        return render(request, 'shop/profile.html', {'form': form})
 
 
 def shop_box(request):
@@ -36,9 +44,9 @@ def animalss(request):
     return render(request, 'shop/animals.html', {'task': task})
 
 
-def vegas(request):
+def smart_watch(request):
     task = vegas_all.objects.all()
-    return render(request, 'shop/vegatables.html', {'task': task})
+    return render(request, 'shop/watch.html', {'task': task})
 
 
 def car(request):
@@ -46,9 +54,9 @@ def car(request):
     return render(request, 'shop/car.html', {'task': task})
 
 
-def jobs(request):
+def head(request):
     task = job.objects.all()
-    return render(request, 'shop/jobs.html', {'task': task})
+    return render(request, 'shop/head.html', {'task': task})
 
 
 def homes(request):
@@ -56,9 +64,9 @@ def homes(request):
     return render(request, 'shop/home.html', {'task': task})
 
 
-def other(request):
+def phone(request):
     task = others.objects.all()
-    return render(request, 'shop/others.html', {'task': task})
+    return render(request, 'shop/phone.html', {'task': task})
 
 
 def home_pages(request):

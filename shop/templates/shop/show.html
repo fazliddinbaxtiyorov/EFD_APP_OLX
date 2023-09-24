@@ -1,14 +1,362 @@
-{% extends "shop/base.html" %}
-{% block content %}
-    <div class="product">
-        <img src="{{ task.photo.url }}" alt="">
-        <h3 class="title">{{task.title}}</h3>
-        <h3 class="map" >Description: {{ task.description }}</h3>
-        <h6 class="map">{{task.location}}-{{ task.date|date:"Y-m-d h:m"  }}</h6>
-        <h3 class="map" >Categories: {{ task.categories }}</h3>
-        <h3 class="title" >Phone Number: {{ task.number }}</h3>
-        <h3 class="cost">{{ task.cost }}</h3>
-    </div>
+{% load static %}
+{% block heading %}
+ <link rel="stylesheet" href="{% static 'shop/show.css' %}">
+ <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock heading %}
+{% block content%}
+<body>
+    <div class="container">
+        <div class="single-product">
+            <div class="row">
+                <div class="col-6">
+                    <div class="product-image">
+                        <div class="product-image-main">
+                            <img src="{{ task.photo.url }}" alt="" id="product-main-image">
+                        </div>
 
-    <a href="{% url 'home' %}" style="width: 95px;height:40px;margin-left:40px;" class="btn btn-info">Back</a>
+                    </div>
+                </div>
+                    <div class="product">
+                        <div class="product-title">
+                            <h2>{{task.title}}</h2>
+                        </div>
+                        <div class="product-rating">
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                            <span><i class="bx bxs-star"></i></span>
+                        </div>
+                        <div class="product-price">
+                            <span class="offer-price">{{ task.cost }}</span>
+                        </div>
+
+                        <div class="product-details">
+                            <h3>Description</h3>
+                            <p>{{ task.description }}</p>
+                            <h3 class="map">Location: {{task.location}}</h3>
+                            <h3 class="title">Phone Number: {{ task.number }}</h3>
+                        </div>
+                        <span class="divider"></span>
+
+                        <div class="product-btn-group">
+                            <a style="text-decoration: none;" href="{% url 'shop_box' %}" class="button buy-now"><i class='bx bxs-zap' ></i>Buy Now</a>
+                            <a style="text-decoration: none;" href="{% url 'shop_box' %}" class="button add-cart"><i class='bx bxs-cart' ></i> Add to Cart</a>
+                            <div class="button heart"><i class='bx bxs-heart' ></i> Add to Wishlist</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2><b>New Products</b></h2>
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for carousel items -->
+			<div class="carousel-inner">
+				<div class="item active">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-2022-hero-blue-wifi-select_FMT_WHH?wid=940&hei=1112&fmt=png-alpha&.v=1664387252309" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Apple iPad</h4>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><strike>$400.00</strike> <b>$369.00</b></p>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://www.sony.co.in/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&bgcolor=FFFFFF&bgc=FFFFFF&wid=2515&hei=1320" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Sony Headphone</h4>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><strike>$25.00</strike> <b>$23.99</b></p>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289661" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Macbook Air</h4>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><strike>$899.00</strike> <b>$649.00</b></p>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://cdn-4.nikon-cdn.com/e/Q5NM96RZZo-YRYNeYvAi9beHK4x3L-8iSKFuXbTDiVzKiZ_IJQu2eA==/Views/353_1543_D750_left.png" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Nikon DSLR</h4>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<p class="item-price"><strike>$315.00</strike> <b>$250.00</b></p>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://mini-io-api.texnomart.uz/catalog/product/835/83562/161852/c9a85cb2-48a3-431b-8970-9ffcc6b074cd.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Sony Play Station</h4>
+									<p class="item-price"><strike>$289.00</strike> <span>$269.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://kattabozor.s3.eu-central-1.amazonaws.com/ri/65f127ad5230511964aa9e64a4aebf05f9165a8813e0eeab3db396e4230fb9c9_qbAmLP_640l.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Macbook Pro</h4>
+									<p class="item-price"><strike>$1099.00</strike> <span>$869.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://m.media-amazon.com/images/I/71OK+KxiT9L.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Bose Speaker</h4>
+									<p class="item-price"><strike>$109.00</strike> <span>$99.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://www.creditasia.uz/upload/iblock/77e/vqpss6qelyhm3wm0b9n1d59xkm9mgoa3/smartfon-samsung-galaxy-s23-ultra-sm-s918b-ds-256gb-lavender.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Samsung Galaxy S23 Ultra</h4>
+									<p class="item-price"><strike>$1200.00</strike> <span>$1969.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row">
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2023/02/8-photoutils.com_-scaled.jpeg?ssl=1" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>iPhone 15 Pro Max</h4>
+									<p class="item-price"><strike>$4500.00</strike> <span>$4499.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://zoodmall.com/cdn-cgi/image/w=500,fit=contain,f=auto/https://images2.zoodmall.com/https%3A/openshop.uz/public/uploads/products/photos/Rt5JB5D1fd2cNNgmqRLxt8C9GO7WTUaFOWjmMOYu.jpeg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Canon DSLR</h4>
+									<p class="item-price"><strike>$315.00</strike> <span>$250.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="#" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://kattabozor.s3.eu-central-1.amazonaws.com/ri/b81a51a820f3d5947644972bb33d195b76010eceea62614edbf7a0c3852fcb31_ukELmU_640l.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Google Pixel</h4>
+									<p class="item-price"><strike>$450.00</strike> <span>$418.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-half-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
+							<div class="thumb-wrapper">
+								<span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+								<div class="img-box">
+									<img src="https://kattabozor.s3.eu-central-1.amazonaws.com/ri/469ceb21dcf3e56a1e3a10556b16840852f9cdc0d2f03648c4c43eb379a52b7c_ul3M9S_640l.jpg" class="img-responsive" alt="">
+								</div>
+								<div class="thumb-content">
+									<h4>Apple Watch</h4>
+									<p class="item-price"><strike>$350.00</strike> <span>$330.00</span></p>
+									<div class="star-rating">
+										<ul class="list-inline">
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star"></i></li>
+											<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+										</ul>
+									</div>
+									<a href="{% url 'shop_box' %}" class="btn btn-primary">Add to Cart</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Carousel controls -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+				<i class="fa fa-angle-left"></i>
+			</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">
+				<i class="fa fa-angle-right"></i>
+			</a>
+		</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+    <a href="{% url 'home' %}" style="width: 95px;height:40px;margin-left:40px;" class="button  btn-info">Back</a>
+
+
+</body>
 {% endblock content%}
