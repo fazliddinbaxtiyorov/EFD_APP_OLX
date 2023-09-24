@@ -1,62 +1,118 @@
-{% extends "shop/base.html" %}
-{% load crispy_forms_tags %}
-
- {% block heading %}
-    <title>OLX.uz Design</title>
+{% load static %}
+{% block heading %}
+ <link rel="stylesheet" href="{% static 'shop/shopping.css' %}">
+ <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+<script src="{% static 'shop/shopping.js' %}"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="shortcut icon" href="https://static.vecteezy.com/system/resources/previews/020/401/223/original/efd-letter-logo-design-on-white-background-efd-creative-circle-letter-logo-concept-efd-letter-design-vector.jpg" type="image/x-icon">
-<style>
-    body{
-      background-image: url("https://www.solidbackgrounds.com/images/3840x2160/3840x2160-light-sky-blue-solid-color-background.jpg");
+     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
-    }
-</style>
- {% endblock heading%}
-{% block content %}
+{% endblock heading %}
+{% block content%}
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+      <img style="width:130px;height:100px;" src="https://static.vecteezy.com/system/resources/previews/020/401/223/original/efd-letter-logo-design-on-white-background-efd-creative-circle-letter-logo-concept-efd-letter-design-vector.jpg" alt="">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{% url 'profile' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/></svg></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/></svg></a>
+        </li>
+      </ul>
+      <form action="{% url 'search' %}" method="GET">
+                  {% csrf_token %}
+        <input class="search" style="height:36px;width:400px;text-align:center;margin:20px 14px;margin-left:300px;border-radius:8px;" type="text" name="q" placeholder="Xaridingizni Turini Yozing">
+  <button class="btn btn-success"  style="height:40px;width:110px;margin-bottom:5px;" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
 
-<style>
+    <div class="d-flex justify-content-center align-items-center mt-5"><button class="btn btn-dark">OUR CATEGORIES</button>
+    </div>
 
-
-</style>
-
-<div class="header">
-  <img class="logo" src="https://static.vecteezy.com/system/resources/previews/020/401/223/original/efd-letter-logo-design-on-white-background-efd-creative-circle-letter-logo-concept-efd-letter-design-vector.jpg" alt="">
-    <p><a href="{% url 'shop_box' %}" style="height:50px;width:90px;margin-top:18px;margin-right:8px;" class="btn btn-primary"><svg style="margin:6px;" xmlns="http://www.w3.org/2000/svg" width="27" height="27" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
-  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-</svg></a><a href="{% url 'profile' %}" style="height:50px;width:120px;margin-top:18px;" class="btn btn-warning rounded bi bi-person-fill"><svg style="margin-right:5px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-</svg>Profile</a>
-{% if user.is_authenticated %}
-    <a href="{% url 'add' %}" style="height:50px;width:120px;margin-top:18px;margin-left:5px;" class="btn btn-primary"><svg style="margin-right:5px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-  <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>Add New</a></p>
-{% endif %}
-</div>
-<div class="search_bar">
-   <form action="{% url 'search' %}" method="GET">
-        {% csrf_token %}
-  <input class="search" style="height:40px;width:600px;text-align:center;margin:20px 14px;margin-left:300px;" type="text" name="q" placeholder="Xaridingizni Turini Yozing">
-  <button class="btn btn-success"  style="height:40px;width:130px;margin-bottom:5px;" type="submit">Search</button>
-</form>
-</div>
-<div class="selection-buttons">
-  <a href="{% url 'vegas' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/savat.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Sabzavotlar</b></a>
-  <a href="{% url 'car' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/car.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Avtomashinalar</b></a>
-  <a href="{% url 'house' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="https://img.freepik.com/premium-photo/close-up-small-white-house-with-red-door-generative-ai_958078-3190.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Ko'chmas Mulk</b></a>
-  <a href="{% url 'animals' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/pet.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Hayvonot Olami</b></a>
-  <a href="{% url 'job' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="/static/job.jpg" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Kasblar</b></a>
-  <a href="{% url 'other' %}" class="efd btn btn-white rounded-circle border-0"><img class="rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKk1RmMNTy8C3iRTTuSTKeXZUEAKWLi_WnnVZE2xaYAJzu_aduJ5XiwxobMUkr4hs-5xU&usqp=CAU" alt="HTML5 Icon" style="width:120px;height:120px;"><b>Boshqalar</b></a>
-
+    <div class="row mt-2 g-4">
+        <div class="col-md-3">
+            <div class="card p-1">
+                <a href="{% url 'phone' %}" style="text-decoration:none;" class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Mobile</span> <span>Phones</span> </div>
+                    <div><img src="https://i.imgur.com/b9zkoz0.jpg" height="100" width="100"/></div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <a href="{% url 'head' %}" style="text-decoration:none;" class="d-flex justify-content-between align-items-center p-2">
+                    <div style="text-decoration:none;" class="flex-column lh-1 imagename"><span>Head</span> Phones</div>
+                    <div> <img src="https://i.imgur.com/SHWASPG.png" height="100" width="100" /> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <a href="{% url 'watch' %}" style="text-decoration:none;"  class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Smart</span> <span>Watches</span> </div>
+                    <div> <img src=" https://i.imgur.com/Ya0OXCv.png" height="100" width="100" /> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <a href="{% url 'animals' %}" style="text-decoration:none;"  class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>All</span> <span>Animals</span> </div>
+                    <div> <img src="https://nukadeti.ru/content/images/static/colorcat200x200/38_2096.jpg" height="100" width="100" /> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2tr5">
+                <a href="{% url 'car' %}" style="text-decoration:none;"  class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Speed</span> <span>Cars</span> </div>
+                    <div> <img src="https://www.freepngimg.com/thumb/lamborghini/162551-convertible-lamborghini-yellow-download-hd-thumb.png" height="100" width="100" /> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <div class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Perfume</span> and <span>Cosmetics</span> </div>
+                    <div> <img src="https://freepngclipart.com/thumb/cosmetics/43149-parfume-dolce-de-parfumerie-perfume-toilette-gabbana-thumb.png" height="100" width="100" /> </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <a href="{% url 'house' %}" style="text-decoration:none;"  class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Hi-Tech</span> <span>House</span> </div>
+                    <div> <img src="https://images.satu.kz/152911558_w640_h640_tovary-dlya-doma.jpg" height="100" width="100" /> </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-2">
+                <div class="d-flex justify-content-between align-items-center p-2">
+                    <div class="flex-column lh-1 imagename"> <span>Laptops</span> </div>
+                    <div> <img src="https://i.imgur.com/6pK5oZl.jpg" height="100" width="100" /> </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="all">
    {% for i in home_view %}
   <div class="product">
+      <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
   <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
       <hr>
   <h3 class="title">{{i.title}}</h3>
-  <h3 class="map" >Categories: {{ task.categories }}</h3>
-   <h6 class="map" >{{i.location}}-{{ i.date|date:"Y-m-d h:m"  }}</h6>
    <h6 class="cost" >{{ i.cost }}</h6>
    </div>
    {% endfor %}
@@ -66,33 +122,32 @@
    <div class="product">
          <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
         <h3 class="title">{{i.title}}</h3>
-        <h6 class="map">{{i.location}}-{{ i.date|date:"Y-m-d h:m"  }}</h6>
-        <h3 class="title" >Phone Number: {{ i.number }}</h3>
-        <h3 class="cost">{{ i.cost }}</h3><p>
+        <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex flex-wrap-wrap" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex flex-direction-row" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
    {% for i in animals_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.webbox.co.uk/wp-content/uploads/2020/10/angry_cat_2-scaled-1568x1046.jpg" alt="">
+        <img src="https://get.wallhere.com/photo/5184x3456-px-animals-grass-tigers-two-wallpapers-white-1904083.jpg" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+        <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in car_search|slice:":24" %}
    <div class="product">
-        <img src="https://cdn.jdpower.com/Average%20Weight%20Of%20A%20Car.jpg" alt="">
+       <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+        <img src="https://blog.rwcarbon.com/wp-content/uploads/2018/08/rw-carbon-fiber-mercedes-w218-cls-63-amg-1-1024x768.jpg" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
@@ -101,47 +156,44 @@
    <div class="product">
         <img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in job_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.searchenginejournal.com/wp-content/uploads/2017/06/shutterstock_268688447.jpg" alt="">
+        <img src="https://i5.walmartimages.com/asr/7a24fd74-ae2f-4392-b541-2e02622cecce.03fb74c8cccd6421508f39ce5a41800b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in other_search|slice:":24" %}
    <div class="product">
-        <img src="https://tangentmaterials.com/wp-content/uploads/2019/11/Fresh-Produce-Pics-017-scaled.jpg" alt="">
+        <img src="https://mycart.mu/cdn/shop/products/apple-iphone-14-mycart-mu-in-mauritius-1.jpg?height=645&pad_color=fff&v=1681886592&width=645" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in vegas_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.healthyeating.org/images/default-source/home-0.0/nutrition-topics-2.0/general-nutrition-wellness/2-2-2-2foodgroups_vegetables_detailfeature.jpg?sfvrsn=226f1bc7_6" alt="">
+        <img src="https://images2.zoodmall.uz/cdn-cgi/image/w=500,fit=contain,f=auto/https%3A%2F%2Fimages2.zoodmall.com%2Fhttps%253A%2Fupload.zoodmall.com%2Fweb%2Fproduct%2Fpicture%2F41%2F13880841%2F162918351743110600652.png" alt="">
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
+       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
+       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 {% endblock content%}
+
