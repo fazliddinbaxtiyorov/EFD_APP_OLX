@@ -1,85 +1,76 @@
 {% extends "shop/base.html" %}
 {% block content %}
 <div class="all">
-   {% for i in all_search %}
+   {% for i in home_view %}
+  <div class="product">
+      <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+  <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
+      <hr>
+  <h3 class="title">{{i.title}}</h3>
+   <h6 class="cost" >{{ i.cost }}</h6>
+   </div>
+   {% endfor %}
+</div>
+<div class="all">
+   {% for i in all_search|slice:":24" %}
    <div class="product">
-        <img src="{{ task.photo.url }}" alt="">
+         <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
+        <h3 class="cost">{{ i.cost|upper }}</h3>
+    </div>
+   {% endfor %}
+</div>
+<div class="all">
+   {% for i in animals_search|slice:":24" %}
+   <div class="product" id="item">
+        <a href="/show_animals/{{ i.id }}"><img src="https://get.wallhere.com/photo/5184x3456-px-animals-grass-tigers-two-wallpapers-white-1904083.jpg" alt=""></a>
+        <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-   {% for i in animals_search %}
+       {% for i in car_search|slice:":24" %}
    <div class="product">
-        <img src="https://get.wallhere.com/photo/5184x3456-px-animals-grass-tigers-two-wallpapers-white-1904083.jpg" alt="">
+       <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
+       <a href="/show_cars/{{ i.id }}"> <img src="https://blog.rwcarbon.com/wp-content/uploads/2018/08/rw-carbon-fiber-mercedes-w218-cls-63-amg-1-1024x768.jpg" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-       {% for i in car_search %}
+       {% for i in home_search|slice:":24" %}
    <div class="product">
-        <img src="https://blog.rwcarbon.com/wp-content/uploads/2018/08/rw-carbon-fiber-mercedes-w218-cls-63-amg-1-1024x768.jpg" alt="">
+       <a href="/show_home/{{ i.id }}"><img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-       {% for i in home_search %}
+       {% for i in job_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt="">
+        <a href="/show_head/{{ i.id }}"><img src="https://i5.walmartimages.com/asr/7a24fd74-ae2f-4392-b541-2e02622cecce.03fb74c8cccd6421508f39ce5a41800b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-       {% for i in job_search %}
+       {% for i in other_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.searchenginejournal.com/wp-content/uploads/2017/06/shutterstock_268688447.jpg" alt="">
+        <a href="/show_phone/{{ i.id }}"><img src="https://mycart.mu/cdn/shop/products/apple-iphone-14-mycart-mu-in-mauritius-1.jpg?height=645&pad_color=fff&v=1681886592&width=645" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-       {% for i in other_search %}
+       {% for i in vegas_search|slice:":24" %}
    <div class="product">
-        <img src="https://mycart.mu/cdn/shop/products/apple-iphone-14-mycart-mu-in-mauritius-1.jpg?height=645&pad_color=fff&v=1681886592&width=645" alt="">
+        <a href="/show_watch/{{ i.id }}"><img src="https://images2.zoodmall.uz/cdn-cgi/image/w=500,fit=contain,f=auto/https%3A%2F%2Fimages2.zoodmall.com%2Fhttps%253A%2Fupload.zoodmall.com%2Fweb%2Fproduct%2Fpicture%2F41%2F13880841%2F162918351743110600652.png" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
-        <h3 class="cost">{{ i.cost }}</h3>
-    </div>
-   {% endfor %}
-</div>
-<div class="all">
-       {% for i in vegas_search %}
-   <div class="product">
-        <img src="https://images2.zoodmall.uz/cdn-cgi/image/w=500,fit=contain,f=auto/https%3A%2F%2Fimages2.zoodmall.com%2Fhttps%253A%2Fupload.zoodmall.com%2Fweb%2Fproduct%2Fpicture%2F41%2F13880841%2F162918351743110600652.png" alt="">
-        <h3 class="title">{{i.title}}</h3>
-        <h3 class="map" >Description: {{ i.description }}</h3>
-        <h6 class="map">{{i.location}}</h6>
-        <h3 class="title" >Phone Number: +{{ i.number }}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
     </div>
    {% endfor %}
