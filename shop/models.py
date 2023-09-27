@@ -34,7 +34,7 @@ class home(models.Model):
         db_table = 'home'
 
 
-class job(models.Model):
+class head_phones(models.Model):
     title = models.CharField(max_length=70)
     number = models.CharField(max_length=15, default='+')
     description = models.CharField(max_length=150)
@@ -56,7 +56,7 @@ class animals(models.Model):
         db_table = 'animals'
 
 
-class others(models.Model):
+class phones(models.Model):
     title = models.CharField(max_length=70)
     number = models.CharField(max_length=15, default='+')
     description = models.CharField(max_length=150)
@@ -64,10 +64,10 @@ class others(models.Model):
     cost = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'others'
+        db_table = 'phone'
 
 
-class vegas_all(models.Model):
+class smart_watches(models.Model):
     title = models.CharField(max_length=70)
     number = models.CharField(max_length=15, default='+')
     description = models.CharField(max_length=150)

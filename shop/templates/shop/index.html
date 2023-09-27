@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+          <a class="nav-link" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
         </li>
          <li class="nav-item">
           <a class="nav-link" href="{% url 'profile' %}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/></svg></a>
@@ -80,14 +80,14 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card p-2">
-                <div class="d-flex justify-content-between align-items-center p-2">
-                    <div class="flex-column lh-1 imagename"> <span>Perfume</span> and <span>Cosmetics</span> </div>
-                    <div> <img src="https://freepngclipart.com/thumb/cosmetics/43149-parfume-dolce-de-parfumerie-perfume-toilette-gabbana-thumb.png" height="100" width="100" /> </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="col-md-3">-->
+<!--            <div class="card p-2">-->
+<!--                <div class="d-flex justify-content-between align-items-center p-2">-->
+<!--                    <div class="flex-column lh-1 imagename"> <span>Perfume</span> and <span>Cosmetics</span> </div>-->
+<!--                    <div> <img src="https://freepngclipart.com/thumb/cosmetics/43149-parfume-dolce-de-parfumerie-perfume-toilette-gabbana-thumb.png" height="100" width="100" /> </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="col-md-3">
             <div class="card p-2">
                 <a href="{% url 'house' %}" style="text-decoration:none;"  class="d-flex justify-content-between align-items-center p-2">
@@ -96,14 +96,14 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card p-2">
-                <div class="d-flex justify-content-between align-items-center p-2">
-                    <div class="flex-column lh-1 imagename"> <span>Laptops</span> </div>
-                    <div> <img src="https://i.imgur.com/6pK5oZl.jpg" height="100" width="100" /> </div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="col-md-3">-->
+<!--            <div class="card p-2">-->
+<!--                <div class="d-flex justify-content-between align-items-center p-2">-->
+<!--                    <div class="flex-column lh-1 imagename"> <span>Laptops</span> </div>-->
+<!--                    <div> <img src="https://i.imgur.com/6pK5oZl.jpg" height="100" width="100" /> </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
 <div class="all">
@@ -122,20 +122,16 @@
    <div class="product">
          <a href="/show/{{ i.id }}"><img src="{{ i.photo.url }}" alt="Product Image"></a>
         <h3 class="title">{{i.title}}</h3>
-        <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex flex-wrap-wrap" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex flex-direction-row" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
+        <h3 class="cost">{{ i.cost|upper }}</h3>
     </div>
    {% endfor %}
 </div>
 <div class="all">
    {% for i in animals_search|slice:":24" %}
-   <div class="product">
-        <img src="https://get.wallhere.com/photo/5184x3456-px-animals-grass-tigers-two-wallpapers-white-1904083.jpg" alt="">
+   <div class="product" id="item">
+        <a href="/show_animals/{{ i.id }}"><img src="https://get.wallhere.com/photo/5184x3456-px-animals-grass-tigers-two-wallpapers-white-1904083.jpg" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-        <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
@@ -143,55 +139,45 @@
        {% for i in car_search|slice:":24" %}
    <div class="product">
        <span class="wish-icon"><i class="fa fa-heart-o"></i></span>
-        <img src="https://blog.rwcarbon.com/wp-content/uploads/2018/08/rw-carbon-fiber-mercedes-w218-cls-63-amg-1-1024x768.jpg" alt="">
+       <a href="/show_cars/{{ i.id }}"> <img src="https://blog.rwcarbon.com/wp-content/uploads/2018/08/rw-carbon-fiber-mercedes-w218-cls-63-amg-1-1024x768.jpg" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in home_search|slice:":24" %}
    <div class="product">
-        <img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt="">
+       <a href="/show_home/{{ i.id }}"><img src="https://www.mojohomes.com.au/sites/default/files/styles/responsive_image_large/public/charisma-30-homeworld-thornton-facade-web-1500x966px.jpg?itok=NIqyWn3U" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
-       {% for i in job_search|slice:":24" %}
+       {% for i in head_search|slice:":24" %}
    <div class="product">
-        <img src="https://i5.walmartimages.com/asr/7a24fd74-ae2f-4392-b541-2e02622cecce.03fb74c8cccd6421508f39ce5a41800b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt="">
+        <a href="/show_head/{{ i.id }}"><img src="https://i5.walmartimages.com/asr/7a24fd74-ae2f-4392-b541-2e02622cecce.03fb74c8cccd6421508f39ce5a41800b.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in other_search|slice:":24" %}
    <div class="product">
-        <img src="https://mycart.mu/cdn/shop/products/apple-iphone-14-mycart-mu-in-mauritius-1.jpg?height=645&pad_color=fff&v=1681886592&width=645" alt="">
+        <a href="/show_phone/{{ i.id }}"><img src="https://mycart.mu/cdn/shop/products/apple-iphone-14-mycart-mu-in-mauritius-1.jpg?height=645&pad_color=fff&v=1681886592&width=645" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
 <div class="all">
        {% for i in vegas_search|slice:":24" %}
    <div class="product">
-        <img src="https://images2.zoodmall.uz/cdn-cgi/image/w=500,fit=contain,f=auto/https%3A%2F%2Fimages2.zoodmall.com%2Fhttps%253A%2Fupload.zoodmall.com%2Fweb%2Fproduct%2Fpicture%2F41%2F13880841%2F162918351743110600652.png" alt="">
+        <a href="/show_watch/{{ i.id }}"><img src="https://images2.zoodmall.uz/cdn-cgi/image/w=500,fit=contain,f=auto/https%3A%2F%2Fimages2.zoodmall.com%2Fhttps%253A%2Fupload.zoodmall.com%2Fweb%2Fproduct%2Fpicture%2F41%2F13880841%2F162918351743110600652.png" alt=""></a>
         <h3 class="title">{{i.title}}</h3>
         <h3 class="cost">{{ i.cost }}</h3>
-       <a class="d-flex justify-content-start" style="text-decoration: none;color:red;" href="{% url 'shop_box' %}"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/></svg></a>
-       <a class="d-flex justify-content-end" style="text-decoration: none;" href="{% url 'shop_box' %}"><svg  xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-basket" viewBox="0 0 17 16"><path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/></svg></a>
     </div>
    {% endfor %}
 </div>
