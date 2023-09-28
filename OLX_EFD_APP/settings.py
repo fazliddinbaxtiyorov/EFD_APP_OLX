@@ -80,11 +80,8 @@ WSGI_APPLICATION = 'OLX_EFD_APP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'products',
-        'USER': 'postgres',
-        'PASSWORD': 'fazliddin07',
-        'HOST': 'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'data.db',
     }
 }
 
