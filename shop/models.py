@@ -31,7 +31,7 @@ class home(models.Model):
     cost = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'home'
+        db_table = 'house'
 
 
 class head_phones(models.Model):
@@ -42,7 +42,7 @@ class head_phones(models.Model):
     cost = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'job'
+        db_table = 'head'
 
 
 class animals(models.Model):
@@ -64,7 +64,7 @@ class phones(models.Model):
     cost = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'phone'
+        db_table = 'iphone'
 
 
 class smart_watches(models.Model):
@@ -75,5 +75,5 @@ class smart_watches(models.Model):
     cost = models.CharField(max_length=255)
 
     class Meta:
-        db_table = 'vegas_all'
+        db_table = 'watch'
 
