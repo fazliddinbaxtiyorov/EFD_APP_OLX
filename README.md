@@ -54,7 +54,7 @@ Kategoriyalar:
   ![image](https://github.com/fazliddinbaxtiyorov/EFD_APP_OLX/assets/137509986/f591ff17-2d9a-4fc9-a48c-7de224f4c65e)
 
 
-* Dasturimizda 70.000 dan ortiq mahsulotlar mavjud.
+* Dasturimizda 6.000 dan ortiq mahsulotlar mavjud.
 
 * EDF dasturimiz sizga yoqdi degan umiddaman kamchiliklar bo'lsa uzr so'raymiz.
 
